@@ -4,12 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interaktiv Karta med Windy</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #windy {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <!-- Ladda in Windy API -->
     <script src="https://embed.windy.com/embed2.js"></script>
 </head>
 <body>
+
+    <!-- Div för att visa Windy-kartan -->
     <div id="windy"></div>
 
-    <script src="script.js"></script>
+    <script>
+        const options = {
+            key: 'UCL2VIHYH7rSag0kcM7nBzvB0GTLQBnP', // Din Windy API-nyckel
+            lat: 57.7, // Latitud (t.ex. Göteborg)
+            lon: 11.9, // Longitud (t.ex. Göteborg)
+            zoom: 4,  // Zoomnivå
+            overlay: 'wind',  // Väderlager (kan vara 'wind', 'rain', 'clouds' osv.)
+            verbose: true // Valfritt: Visar loggar för felsökning
+        };
+
+        // Initiera Windy-kartan med de inställningar som specificeras i options
+        windyInit(options, function(windy) {
+            console.log('Windy-kartan är redo!');
+        });
+    </script>
+    
 </body>
 </html>
